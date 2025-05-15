@@ -1,4 +1,4 @@
-### Compatibility with modern kernels
+### ZTop ZT9101 vendor wireless driver
 
 This driver was updated to build on Linux kernels ≥ 6.x by fixing function signature mismatches in `cfg80211` operations, specifically:
 
