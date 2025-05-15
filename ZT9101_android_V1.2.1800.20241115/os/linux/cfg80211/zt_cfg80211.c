@@ -2890,15 +2890,14 @@ static zt_s32 _call_set_txpower(struct wiphy *wiphy,
 }
 
 
-static zt_s32 _call_get_txpower(struct wiphy *wiphy,
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
-                                struct wireless_dev *wdev,
-#endif
-                                zt_s32 *dbm)
+static int _call_get_txpower(struct wiphy *wiphy,
+                             struct wireless_dev *wdev,
+                             unsigned int type,
+                             int *dbm)
 {
-    CFG80211_DBG();
+    (void)type;
 
-    *dbm = (12);
+    *dbm = 12;
 
     return 0;
 }
@@ -3037,19 +3036,14 @@ static zt_s32 _flush_pmksa_cb(struct wiphy *wiphy,
     return 0;
 }
 
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
-static zt_s32 _set_monitor_channel(struct wiphy *wiphy
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
-                                   , struct cfg80211_chan_def *chandef
-#else
-                                   , struct ieee80211_channel *chan, enum nl80211_channel_type channel_type
-#endif
-                                  )
+static int _set_monitor_channel(struct wiphy *wiphy,
+                                struct net_device *dev,
+                                struct cfg80211_chan_def *chandef)
 {
-
+    (void)dev;
     return 0;
 }
-#endif
+
 
 
 static zt_s32 _cfg80211_Mgmt_Tx(struct wiphy *wiphy,
